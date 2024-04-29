@@ -1,0 +1,31 @@
+/* NAVBAR */
+  
+#navbar {
+    background-color: #050505;
+    font-size:x-large;
+}
+
+#navbar h1 {
+    color: #ffffff;
+}
+
+#navbar a {
+    color: #ffffff;
+}
+  
+#navbar a:hover {
+    color: #7a7a7a;
+}
+  
+#navbar-items .navbar-nav {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    margin: 0 100px;
+    gap: 100px;
+}
+
+.navbar-toggler {
+    color: #ffffff; 
+}
