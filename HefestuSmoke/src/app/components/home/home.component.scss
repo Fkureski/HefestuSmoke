@@ -3,20 +3,17 @@
 #navbar {
     background-color: #050505;
     font-size:x-large;
+    
+    h1 {
+        color: #ffffff;
+        font-size: 50px;
+    }
+    
+    a {
+        color: #ffffff;
+    }
 }
 
-#navbar h1 {
-    color: #ffffff;
-}
-
-#navbar a {
-    color: #ffffff;
-}
-  
-#navbar a:hover {
-    color: #7a7a7a;
-}
-  
 #navbar-items .navbar-nav {
     display: flex;
     justify-content: end;
@@ -28,4 +25,39 @@
 
 .navbar-toggler {
     color: #ffffff; 
+}
+
+// WELLCOME
+
+.wc-section{
+    margin-top: 15%;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    padding-right: 60px;
+    h2{
+        text-align: center;
+        color: #000000;
+        font-size: 60px;
+        font-weight: 800;
+    }
+}
+
+.info-section{
+    padding: 70px;
+    gap: 50px;
+    margin-top: 15%;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    background-color: black;
+    #imagem1{
+        width: 50%;
+        border-radius: 100px;
+    }
+    .info-data{
+        flex-direction: column;
+        text-align: center;
+        color: white;
+    }
 }
