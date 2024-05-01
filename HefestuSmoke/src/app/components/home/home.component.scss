@@ -20,6 +20,7 @@
     align-items: center;
     text-align: center;
     background-color: black;
+    gap: 50px;
 
     #imagem1 {
         width: 100%;
@@ -29,8 +30,12 @@
 
     .info-data {
         margin-top: 30px;
-        /* Adicionado espaço superior */
         color: white;
+        gap: 30px;
+        h3{
+            margin-top: 0;
+            margin-bottom: 40px;
+        }
     }
 }
 

@@ -1,1 +1,22 @@
-<btn-primary btn-text="receber emails"></btn-primary>
+<section class="form-section">
+    <form [formGroup]="novidadesForm">
+        <label for="name">Nome</label>
+        <input id="name" formControlName="name"/>
+        <label for="email">E-mail</label>
+        <input id="email" formControlName="email"/>
+        <btn-primary 
+            btn-text="se inscreva"
+            (submit)="onSubmit()"
+            [disabled]="!novidadesForm.valid"
+            [loading]="loading()"
+        >
+        </btn-primary>
+    </form>
+    <div class="text">
+        <h3>
+            Fique por dentro de tendências
+        </h3>
+        <img id="img2" src="\assets\img\arabicsmoke.jpg">
+        <p>Esteja sempre à frente das novidades! Inscreva-se em nosso boletim informativo para receber em primeira mão todas as atualizações, lançamentos e promoções exclusivas da HefestuSmoke Hookah Tabacaria. Não perca a chance de ficar por dentro do melhor do mundo do narguilé e tabacaria.</p>
+    </div>
+</section>
