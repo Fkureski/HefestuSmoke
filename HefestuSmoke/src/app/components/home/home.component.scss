@@ -1,63 +1,57 @@
-/* NAVBAR */
-  
-#navbar {
-    background-color: #050505;
-    font-size:x-large;
-    
-    h1 {
-        color: #ffffff;
-        font-size: 50px;
-    }
-    
-    a {
-        color: #ffffff;
-    }
-}
+/* WELCOME */
 
-#navbar-items .navbar-nav {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    width: 100%;
-    margin: 0 100px;
-    gap: 100px;
-}
-
-.navbar-toggler {
-    color: #ffffff; 
-}
-
-// WELLCOME
-
-.wc-section{
+.wc-section {
     margin-top: 15%;
     padding: 40px;
-    display: flex;
-    justify-content: center;
-    padding-right: 60px;
-    h2{
-        text-align: center;
+    text-align: center;
+
+    h2 {
         color: #000000;
         font-size: 60px;
         font-weight: 800;
     }
 }
 
-.info-section{
+.info-section {
     padding: 70px;
-    gap: 50px;
     margin-top: 15%;
     display: flex;
-    justify-content:space-between;
+    flex-direction: space-between;
     align-items: center;
+    text-align: center;
     background-color: black;
-    #imagem1{
-        width: 50%;
+
+    #imagem1 {
+        width: 100%;
+        max-width: 500px;
         border-radius: 100px;
     }
-    .info-data{
-        flex-direction: column;
-        text-align: center;
+
+    .info-data {
+        margin-top: 30px;
+        /* Adicionado espaço superior */
         color: white;
+    }
+}
+
+// Media Queries para diferentes tamanhos de tela
+@media (max-width: 768px) {
+    #navbar-items .navbar-nav {
+        margin: 0;
+        justify-content: center;
+    }
+
+    .wc-section {
+        h2 {
+            color: #000000;
+            font-size: 50px;
+            font-weight: 800;
+        }
+    }
+
+    .info-section {
+        flex-direction: column;
+        padding: 30px;
+        gap: 15px;
     }
 }

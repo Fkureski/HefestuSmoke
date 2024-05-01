@@ -1,29 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top" id="navbar">
-    <div class="container py-3">
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-items"
-            aria-controls="navbar-items" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="bi bi-list"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar-items">
-            <h1>HefestuSmoke</h1>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li>
-                    <a class="nav-link nav-link-scroll active" aria-current="page" href="#"><i class="bi bi-house"></i>
-                        Produtos </a>
-                </li>
-                <li>
-                    <a class="btn-login" routerLink="/login" role="button">Login</a>
-                </li>
-                <li>
-                    <a class="btn-singup" routerLink="/cadastro" role="button">Cadastro</a>
-                </li>
-                <li>
-                    <a class="nav-link nav-link-scroll" href="#"><i class="bi bi-cart2"></i></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<app-nav-bar></app-nav-bar>
 <main>
     <section class="wc-section">
         <div class="wc-data">
@@ -45,5 +20,5 @@
                 tradições em nossa loja, onde a paixão pelo tabaco é celebrada em cada detalhe.</p>
         </div>
     </section>
-
+    <app-novidades></app-novidades>
 </main>
