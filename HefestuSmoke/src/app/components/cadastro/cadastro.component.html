@@ -1,1 +1,36 @@
-<p>cadastro works!</p>
+<main>
+    <section class="cadastro">
+        <div class="cadastro-container">
+            <h2>Cadastro</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="text" class="form-label">Nome Completo</label>
+                    <input type="text" class="form-control" id="text" placeholder="Full name">
+                </div>
+                <div class="mb-3">
+                    <label for="text" class="form-label">CPF</label>
+                    <input type="text" class="form-control" id="text" placeholder="CPF">
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <div class="mb-3">
+                    <label for="date" class="form-label">Data de Nasciimento</label>
+                    <input type="date" class="form-control" id="date" placeholder="Data">
+                </div>
+
+                <button type="submit" class="btn btn-black">Cadastrar</button>
+          
+            </form>
+            <div class="alternative-action">
+                <a [routerLink]="'.'">Voltar</a>
+            </div>
+        </div>
+    </section>
+</main>

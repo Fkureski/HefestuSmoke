@@ -8,7 +8,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [NgbCollapseModule, RouterLink],
   templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.scss'
+  styleUrls: ['./nav-bar.component.scss'] 
 })
 export class NavBarComponent {
   
