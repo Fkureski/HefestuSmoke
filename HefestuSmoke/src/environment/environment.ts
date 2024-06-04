@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    const firebase: {
+    firebase: {
         apiKey: "AIzaSyD33PEPPdv1Ns0C0DY7NLM5RRMaDxsjoOo",
         authDomain: "hefestusmoke.firebaseapp.com",
         databaseURL: "https://hefestusmoke-default-rtdb.firebaseio.com",
