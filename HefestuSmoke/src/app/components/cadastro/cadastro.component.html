@@ -1,42 +1,45 @@
 <main>
     <section class="cadastro">
-        <div class="cadastro-container">
-            <h2>Cadastro</h2>
-            <form [formGroup]="cadastroForm" (submit)="onSubmit()">
-                <div class="mb-3">
-                    <label for="nome" class="form-label">Nome Completo</label>
-                    <input type="text" class="form-control" id="nome" placeholder="Nome Completo" formControlName="nome">
-                    @if (cadastroForm.get('nome')?.hasError('required') && cadastroForm.get('nome')?.touched) {
-                    <div>Complete o campo</div>
-                    }
-                </div>
-
-                <div class="mb-3">
-                    <label for="cpf" class="form-label">CPF</label>
-                    <input type="text" class="form-control" id="cpf" placeholder="CPF" formControlName="cpf">
-                </div>
-
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Seu e-mail" formControlName="email">
-                </div>
-
-                <div class="mb-3">
-                    <label for="senha" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="senha" placeholder="Senha" formControlName="senha">
-                </div>
-
-                <div class="mb-3">
-                    <label for="data" class="form-label">Data de Nascimento</label>
-                    <input type="date" class="form-control" id="data" placeholder="Data de nascimento" formControlName="dataNascimento">
-                </div>
-
-                <button type="submit" class="btn btn-primary">Cadastrar</button>
-            </form>
-            
-            <div class="alternative-action">
-                <a [routerLink]="''">Voltar</a>
-            </div>
+      <div class="cadastro-container">
+        <h2>Cadastro</h2>
+        <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome Completo</label>
+            <input type="text" class="form-control" id="nome" placeholder="Nome Completo" formControlName="nome">
+            <div *ngIf="cadastroForm.get('nome')?.hasError('required') && cadastroForm.get('nome')?.touched" class="form-text text-danger">Complete o campo</div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="cpf" class="form-label">CPF</label>
+            <input type="text" class="form-control" id="cpf" placeholder="CPF" formControlName="cpf">
+            <div *ngIf="cadastroForm.get('cpf')?.hasError('required') && cadastroForm.get('cpf')?.touched" class="form-text text-danger">Complete o campo</div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Seu e-mail" formControlName="email">
+            <div *ngIf="cadastroForm.get('email')?.hasError('required') && cadastroForm.get('email')?.touched" class="form-text text-danger">Complete o campo</div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="senha" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="senha" placeholder="Senha" formControlName="senha">
+            <div *ngIf="cadastroForm.get('senha')?.hasError('required') && cadastroForm.get('senha')?.touched" class="form-text text-danger">Complete o campo</div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="data" class="form-label">Data de Nascimento</label>
+            <input type="date" class="form-control" id="data" placeholder="Data de nascimento" formControlName="dataNascimento">
+            <div *ngIf="cadastroForm.get('dataNascimento')?.hasError('required') && cadastroForm.get('dataNascimento')?.touched" class="form-text text-danger">Complete o campo</div>
+          </div>
+  
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+  
+        <div class="alternative-action">
+          <a [routerLink]="''">Voltar</a>
         </div>
+      </div>
     </section>
-</main>
+  </main>
+  
