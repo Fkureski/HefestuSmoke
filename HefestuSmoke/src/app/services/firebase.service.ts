@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { Database, ref, set, push } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: Database) { }
 
   createUser(user: any) {
-    return this.db.list('/users').push(user);
+    const usersRef = ref(this.db, 'users');
+    return push(usersRef, user);
   }
 
   // Adicione mais métodos conforme necessário

@@ -1,19 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FirebaseService } from '../../services/firebase.service';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../../../environment/environment';
 
 @Component({
   selector: 'app-cadastro',
   standalone: true,
   imports: [RouterLink, ReactiveFormsModule, CommonModule],
   templateUrl: './cadastro.component.html',
-  styleUrl: './cadastro.component.scss',
+  styleUrls: ['./cadastro.component.scss'],
+  providers:[FirebaseService]
 })
-export class CadastroComponent {
+export class CadastroComponent implements OnInit {
   cadastroForm = new FormGroup({
+    id: new FormControl<number>(0),
     nome: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(4),
@@ -42,14 +47,23 @@ export class CadastroComponent {
       Validators.minLength(6),
     ]),
   });
-  
+
+  constructor(private firebaseService: FirebaseService) {}
+
   ngOnInit() {}
 
-  onClick(){
+  onClick() {
     if (this.cadastroForm.valid) {
-      console.log(this.cadastroForm);
+      this.firebaseService.createUser(this.cadastroForm.value)
+        .then(() => {
+          console.log('Usuário criado com sucesso');
+          this.cadastroForm.reset();  // Redefine o formulário após o envio bem-sucedido
+          // Redirecionar ou mostrar mensagem de sucesso
+        })
+        .catch((error) => {
+          console.error('Erro ao criar usuário:', error);
+          // Mostrar mensagem de erro
+        });
     }
   }
-  
-  
 }
