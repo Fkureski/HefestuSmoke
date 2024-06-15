@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Database, ref, set, push } from '@angular/fire/database';
+import { Database, ref, set, push, onValue } from '@angular/fire/database';
+import { map, Observable } from 'rxjs';
+import { query, get, child, getDatabase } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,32 @@ export class FirebaseService {
   createUser(user: any) {
     const usersRef = ref(this.db, 'users');
     return push(usersRef, user);
+  }
+
+  createProduto(produto: any) {
+    const produtosRef = ref(this.db, 'produtos');
+    return push(produtosRef, produto);
+  }
+
+  listar(): Observable<any[]> {
+    const produtosRef = ref(this.db, 'produtos');
+    const produtosQuery = query(produtosRef);
+
+    return new Observable((observer) => {
+      onValue(produtosQuery, (snapshot) => {
+        const produtos: any[] = [];
+        snapshot.forEach((childSnapshot) => {
+          produtos.push({
+            key: childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+        observer.next(produtos);
+        observer.complete();
+      }, (error) => {
+        observer.error(error);
+      });
+    });
   }
 
   // Adicione mais métodos conforme necessário
