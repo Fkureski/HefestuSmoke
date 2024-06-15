@@ -2,11 +2,16 @@ import { Injectable } from '@angular/core';
 import { Database, ref, set, push, onValue } from '@angular/fire/database';
 import { map, Observable } from 'rxjs';
 import { query, get, child, getDatabase } from '@angular/fire/database';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
+  auth: any;
   constructor(private db: Database) { }
 
   createUser(user: any) {
@@ -38,6 +43,13 @@ export class FirebaseService {
         observer.error(error);
       });
     });
+  }
+  login(email: string, password: string) {
+    return this.auth.signInWithEmailAndPassword(email, password);
+  }
+
+  logout() {
+    return this.auth.signOut();
   }
 
   // Adicione mais métodos conforme necessário
