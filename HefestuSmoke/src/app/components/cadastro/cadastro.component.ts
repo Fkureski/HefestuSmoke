@@ -48,6 +48,8 @@ export class CadastroComponent implements OnInit {
     ]),
   });
 
+  redirectToLogin = false;
+
   constructor(private firebaseService: FirebaseService) {}
 
   ngOnInit() {}
@@ -58,7 +60,8 @@ export class CadastroComponent implements OnInit {
         .then(() => {
           console.log('Usuário criado com sucesso');
           this.cadastroForm.reset();  // Redefine o formulário após o envio bem-sucedido
-          // Redirecionar ou mostrar mensagem de sucesso
+          this.cadastroForm.reset();  // Redefine o formulário após o envio bem-sucedido
+          this.redirectToLogin = true; // Define a variável para controlar o redirecionamento
         })
         .catch((error) => {
           console.error('Erro ao criar usuário:', error);
