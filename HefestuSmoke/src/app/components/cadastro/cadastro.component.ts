@@ -4,9 +4,9 @@ import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FirebaseService } from '../../services/firebase.service';
 
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { environment } from '../../../environment/environment';
+// import { AngularFireModule } from '@angular/fire/compat';
+// import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+// import { environment } from '../../../environment/environment';
 
 @Component({
   selector: 'app-cadastro',

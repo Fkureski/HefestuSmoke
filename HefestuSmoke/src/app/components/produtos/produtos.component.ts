@@ -1,16 +1,28 @@
-import { Injectable } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Database, ref, push, onValue, remove } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
-@Injectable({
-  providedIn: 'root'
+@Component({
+  selector: 'app-produtos',
+  templateUrl: './produtos.component.html',
+  standalone: true,
+  imports: [CommonModule, RouterLink],
+  styleUrls: ['./produtos.component.scss']  // Atualize para SCSS
 })
-export class FirebaseService {
-  constructor(private db: Database) { }
+export class ProdutosComponent implements OnInit {
+  produtos$: Observable<any[]>;
+  produtos: any[] = [];
 
-  createUser(user: any) {
-    const usersRef = ref(this.db, 'users');
-    return push(usersRef, user);
+  constructor(private db: Database) {
+    this.produtos$ = this.listar();
+  }
+
+  ngOnInit(): void {
+    this.produtos$.subscribe(produtos => {
+      this.produtos = produtos;
+    });
   }
 
   createProduto(produto: any) {
@@ -40,5 +52,19 @@ export class FirebaseService {
   excluirProduto(key: string) {
     const produtoRef = ref(this.db, `produtos/${key}`);
     return remove(produtoRef);
+  }
+
+  editar(key: string) {
+    // Lógica para editar produto
+    console.log(`Editar produto com key: ${key}`);
+  }
+
+  excluir(key: string) {
+    this.excluirProduto(key).then(() => {
+      console.log(`Produto com key: ${key} excluído`);
+      this.produtos = this.produtos.filter(produto => produto.key !== key);
+    }).catch(error => {
+      console.error(`Erro ao excluir produto com key: ${key}`, error);
+    });
   }
 }
