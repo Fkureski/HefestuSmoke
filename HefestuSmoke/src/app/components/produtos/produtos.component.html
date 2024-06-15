@@ -7,6 +7,7 @@
           <tr>
             <th scope="col">Código</th>
             <th scope="col">Nome</th>
+            <th scope="col">Descrição</th>
             <th scope="col" style="width: 20%;">Imagem</th>
             <th scope="col">Valor</th>
             <th scope="col"></th>
@@ -16,6 +17,7 @@
           <tr *ngFor="let produto of produtos">
             <th scope="row">{{ produto.key }}</th>
             <td>{{ produto.nomeProduto }}</td>
+            <td>{{ produto.descricao }}</td>
             <td><img [src]="produto.imagemUrl" width="30%" /></td>
             <td>{{ produto.valor | currency:'BRL' }}</td>
             <td>

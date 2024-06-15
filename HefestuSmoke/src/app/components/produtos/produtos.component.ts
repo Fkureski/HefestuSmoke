@@ -54,11 +54,6 @@ export class ProdutosComponent implements OnInit {
     return remove(produtoRef);
   }
 
-  editar(key: string) {
-    // Lógica para editar produto
-    console.log(`Editar produto com key: ${key}`);
-  }
-
   excluir(key: string) {
     this.excluirProduto(key).then(() => {
       console.log(`Produto com key: ${key} excluído`);
