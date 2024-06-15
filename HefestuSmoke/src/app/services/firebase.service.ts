@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Database, ref, set, push, onValue } from '@angular/fire/database';
-import { map, Observable } from 'rxjs';
-import { query, get, child, getDatabase } from '@angular/fire/database';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFireDatabase } from '@angular/fire/compat/database';
-
+import { Database, ref, push, onValue, query } from '@angular/fire/database';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
-  auth: any;
-  constructor(private db: Database) { }
+  auth: any
+  constructor(private db: Database, private firestore: AngularFirestore) { }
+
+  getProdutos(): Observable<any[]> {
+    return this.firestore.collection('produtos').valueChanges({ idField: 'key' });
+  }
 
   createUser(user: any) {
     const usersRef = ref(this.db, 'users');
@@ -42,8 +43,10 @@ export class FirebaseService {
       }, (error) => {
         observer.error(error);
       });
+      
     });
   }
+
   login(email: string, password: string) {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
@@ -52,5 +55,5 @@ export class FirebaseService {
     return this.auth.signOut();
   }
 
-  // Adicione mais métodos conforme necessário
+ 
 }
