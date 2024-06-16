@@ -11,6 +11,7 @@
             <th scope="col">Descrição</th>
             <th scope="col" style="width: 20%;">Imagem</th>
             <th scope="col">Valor</th>
+            <th scope="col">Quantidade</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -22,6 +23,7 @@
             <td>{{ produto.descricao }}</td>
             <td><img [src]="produto.imagemUrl" width="30%" /></td>
             <td>{{ produto.valor | currency:'BRL' }}</td>
+            <td>{{ produto.quantidade}}</td>
             <td>
               <button class="btn btn-warning" (click)="editar(produto)">Editar</button>
               &nbsp;
@@ -57,6 +59,10 @@
           <div>
             <label for="valor">Valor</label>
             <input id="valor" type="number" [(ngModel)]="produtoEditando.valor" name="valor" />
+          </div>
+          <div>
+            <label for="quantidade">Quantidade</label>
+            <input id="quantidade" type="number" [(ngModel)]="produtoEditando.quantidade" name="quantidade" />
           </div>
           <button type="submit" class="btn btn-success">Salvar</button>
         </form>

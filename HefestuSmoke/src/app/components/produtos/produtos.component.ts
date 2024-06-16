@@ -88,6 +88,9 @@ export class ProdutosComponent implements OnInit {
     if (this.produtoEditando.valor !== this.produtoOriginal.valor) {
       produtoAtualizado.valor = this.produtoEditando.valor;
     }
+    if (this.produtoEditando.quantidade !== this.produtoOriginal.quantidade) {
+      produtoAtualizado.quantidade = this.produtoEditando.quantidade;
+    }
 
     console.log("Atualizando produto:", produtoAtualizado); // Log para depuração
 

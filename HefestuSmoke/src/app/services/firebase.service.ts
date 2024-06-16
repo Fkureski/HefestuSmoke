@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Database, ref, set, push, onValue, update, orderByChild, equalTo } from '@angular/fire/database';
+import { Database, ref, set, push, onValue, update } from '@angular/fire/database';
 import { map, Observable } from 'rxjs';
 import { query, get, child, getDatabase } from '@angular/fire/database';
 
@@ -45,6 +45,7 @@ export class FirebaseService {
     return update(produtoRef, produto);
   }
 
+<<<<<<< HEAD
   validarUsuario(email: string, senha: string): Observable<any> {
     const usersRef = ref(this.db, 'users');
     const emailQuery = query(usersRef, orderByChild('email'), equalTo(email));
@@ -68,4 +69,7 @@ export class FirebaseService {
       });
     });
   }
+=======
+  // Adicione mais métodos conforme necessário
+>>>>>>> 515fc727eae4a957b423b45a889cf3d969f9d60a
 }
