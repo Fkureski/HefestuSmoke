@@ -8,14 +8,17 @@
         </div>
         <div class="produto-detalhes">
           <p class="produto-descricao">{{ produto.descricao }}</p>
-          <p class="produto-valor">{{ produto.valor | currency:'BRL' }}</p>
           <p class="produto-marca">{{ produto.marca }}</p>
-          <button class="btn-comprar" (click)="excluir(produto.key)">Comprar</button>
+          <button class="btn-comprar" (click)="diminuir(produto.key)">Comprar</button>
+          <div class="produto-acoes">
+            <p class="produto-valor">{{ produto.valor | currency:'BRL' }}</p>
+            <p class="quantidade">Unidades: {{ produto.quantidade }}</p>
+          </div>
         </div>
       </div>
-      <div class="alternative-action fixed-action">
-        <a [routerLink]="''">Voltar</a>
-      </div>
+    </div>
+    <div class="alternative-action fixed-action">
+      <a [routerLink]="''">Voltar</a>
     </div>
   </section>
 </main>

@@ -54,7 +54,23 @@ export class VendasComponent implements OnInit {
 
   excluirProduto(key: string) {
     const produtoRef = ref(this.db, `produtos/${key}`);
-    return remove(produtoRef); // Remove um produto pelo key
+    return remove(produtoRef); // Remove um produto
+  }
+
+  diminuir(Key: string): void {
+    const produtoIndex = this.produtos.findIndex(p => p.key === Key);
+    if (produtoIndex !== -1) {
+      const produto = this.produtos[produtoIndex];
+      if (produto.quantidade > 0) {
+        produto.quantidade -= 1;
+        if (produto.quantidade == 0) {
+          this.excluir(Key);
+        } else {
+          const produtoRef = ref(this.db, `produtos/${Key}`);
+          update(produtoRef, { quantidade: produto.quantidade });
+        }
+      }
+    }
   }
 
   excluir(key: string) {
