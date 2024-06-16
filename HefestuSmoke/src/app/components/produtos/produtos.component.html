@@ -19,7 +19,7 @@
             <td><img [src]="produto.imagemUrl" width="30%" /></td>
             <td>{{ produto.valor | currency:'BRL' }}</td>
             <td>
-              <button class="btn btn-warning" (click)="editar(produto.key)">Editar</button>
+              <button class="btn btn-warning" (click)="editar(produto)">Editar</button>
               &nbsp;
               <button class="btn btn-danger" (click)="excluir(produto.key)">Excluir</button>
             </td>
@@ -28,6 +28,26 @@
       </table>
       <div class="alternative-action">
         <a [routerLink]="''">Voltar</a>
+      </div>
+
+      <!-- Formulário de edição -->
+      <div *ngIf="produtoEditando">
+        <h2>Editar Produto</h2>
+        <form (ngSubmit)="atualizarProduto()">
+          <div>
+            <label for="nomeProduto">Nome</label>
+            <input id="nomeProduto" [(ngModel)]="produtoEditando.nomeProduto" name="nomeProduto" />
+          </div>
+          <div>
+            <label for="imagemUrl">URL da Imagem</label>
+            <input id="imagemUrl" [(ngModel)]="produtoEditando.imagemUrl" name="imagemUrl" />
+          </div>
+          <div>
+            <label for="valor">Valor</label>
+            <input id="valor" type="number" [(ngModel)]="produtoEditando.valor" name="valor" />
+          </div>
+          <button type="submit" class="btn btn-success">Salvar</button>
+        </form>
       </div>
     </div>
   </section>

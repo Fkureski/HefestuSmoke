@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Database, ref, set, push, onValue } from '@angular/fire/database';
+import { Database, ref, set, push, onValue, update } from '@angular/fire/database';
 import { map, Observable } from 'rxjs';
 import { query, get, child, getDatabase } from '@angular/fire/database';
 
@@ -38,6 +38,11 @@ export class FirebaseService {
         observer.error(error);
       });
     });
+  }
+
+  atualizarProduto(key: string, produto: any) {
+    const produtoRef = ref(this.db, `produtos/${key}`);
+    return update(produtoRef, produto);
   }
 
   // Adicione mais métodos conforme necessário
