@@ -68,6 +68,4 @@ export class FirebaseService {
       });
     });
   }
-
-  // Adicione mais métodos conforme necessário
 }
