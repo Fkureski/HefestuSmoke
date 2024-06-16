@@ -9,16 +9,19 @@ import { query, get, child, getDatabase } from '@angular/fire/database';
 export class FirebaseService {
   constructor(private db: Database) { }
 
+  // Método para criar usuário
   createUser(user: any) {
     const usersRef = ref(this.db, 'users');
     return push(usersRef, user);
   }
 
+  // Método para criar produto
   createProduto(produto: any) {
     const produtosRef = ref(this.db, 'produtos');
     return push(produtosRef, produto);
   }
 
+  // Método para listar produtos
   listar(): Observable<any[]> {
     const produtosRef = ref(this.db, 'produtos');
     const produtosQuery = query(produtosRef);
@@ -40,11 +43,13 @@ export class FirebaseService {
     });
   }
 
+  // Método para atualizar produto
   atualizarProduto(key: string, produto: any) {
     const produtoRef = ref(this.db, `produtos/${key}`);
     return update(produtoRef, produto);
   }
 
+  // Novo método para validar usuário pelo email e senha
   validarUsuario(email: string, senha: string): Observable<any> {
     const usersRef = ref(this.db, 'users');
     const emailQuery = query(usersRef, orderByChild('email'), equalTo(email));
