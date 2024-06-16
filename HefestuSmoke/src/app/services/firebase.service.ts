@@ -44,6 +44,4 @@ export class FirebaseService {
     const produtoRef = ref(this.db, `produtos/${key}`);
     return update(produtoRef, produto);
   }
-
-  // Adicione mais métodos conforme necessário
 }

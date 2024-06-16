@@ -32,6 +32,13 @@
           </div>
         </div>
         <div class="mb-3">
+          <label for="quantidade" class="form-label">Quantidade</label>
+          <input [formControl]="cadastroForm.controls.quantidade" type="number" class="form-control" id="quantidade" placeholder="Quantidade do produto">
+          <div *ngIf="cadastroForm.get('quantidade')?.hasError('required') && cadastroForm.get('quantidade')?.touched" class="form-text text-danger">
+            Complete o campo
+          </div>
+        </div>
+        <div class="mb-3">
           <label for="imagemUrl" class="form-label">URL da Imagem</label>
           <input [formControl]="cadastroForm.controls.imagemUrl" type="text" class="form-control" id="imagemUrl" placeholder="URL da imagem do produto">
           <div *ngIf="cadastroForm.get('imagemUrl')?.hasError('required') && cadastroForm.get('imagemUrl')?.touched" class="form-text text-danger">

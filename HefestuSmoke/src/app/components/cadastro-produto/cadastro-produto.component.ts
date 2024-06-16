@@ -29,9 +29,13 @@ export class CadastroProdutoComponent implements OnInit {
       Validators.required,
       Validators.min(0.01)
     ]),
+    quantidade: new FormControl<number | null>(null, [
+      Validators.required,
+    ]),
+    
     imagemUrl: new FormControl<string>('', [
       Validators.required,
-      Validators.pattern('(https?://.*\.(?:png|jpg|jpeg|gif|svg|webp))') // Validação para URL de imagem
+      Validators.pattern('(https?://.*\.(?:png|jpg|jpeg|gif|svg|webp))') 
     ]),
   });
 
@@ -44,12 +48,12 @@ export class CadastroProdutoComponent implements OnInit {
       this.firebaseService.createProduto(this.cadastroForm.value)
         .then(() => {
           console.log('Produto criado com sucesso');
-          this.cadastroForm.reset();  // Redefine o formulário após o envio bem-sucedido
-          // Redirecionar ou mostrar mensagem de sucesso
+          this.cadastroForm.reset(); 
+          alert("produto Salvo com Sucesso")
         })
         .catch((error) => {
           console.error('Erro ao criar produto:', error);
-          // Mostrar mensagem de erro
+          alert("erro ao Cadastrar Produto")
         });
     }
   }
