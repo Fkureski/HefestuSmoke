@@ -24,7 +24,12 @@ export class LoginComponent {
       if (user) {
         console.log('Usuário autenticado:', user);
         this.isAuthenticated = true;
-        this.router.navigate(['/produtos']);
+        
+        if (user.admin) {
+          this.router.navigate(['/listaUsuarios']);
+        } else {
+          this.router.navigate(['/produtos']);
+        }
       } else {
         console.error('Email ou senha incorretos.');
         this.isAuthenticated = false;
