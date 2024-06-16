@@ -29,6 +29,10 @@ export class CadastroProdutoComponent implements OnInit {
       Validators.required,
       Validators.min(0.01)
     ]),
+    imagemUrl: new FormControl<string>('', [
+      Validators.required,
+      Validators.pattern('(https?://.*\.(?:png|jpg|jpeg|gif|svg|webp))') // Validação para URL de imagem
+    ]),
   });
 
   constructor(private firebaseService: FirebaseService) {}

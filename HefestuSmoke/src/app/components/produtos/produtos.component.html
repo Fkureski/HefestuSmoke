@@ -7,6 +7,8 @@
           <tr>
             <th scope="col">Código</th>
             <th scope="col">Nome</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Descrição</th>
             <th scope="col" style="width: 20%;">Imagem</th>
             <th scope="col">Valor</th>
             <th scope="col"></th>
@@ -16,6 +18,8 @@
           <tr *ngFor="let produto of produtos">
             <th scope="row">{{ produto.key }}</th>
             <td>{{ produto.nomeProduto }}</td>
+            <td>{{ produto.marca }}</td>
+            <td>{{ produto.descricao }}</td>
             <td><img [src]="produto.imagemUrl" width="30%" /></td>
             <td>{{ produto.valor | currency:'BRL' }}</td>
             <td>
@@ -37,6 +41,14 @@
           <div>
             <label for="nomeProduto">Nome</label>
             <input id="nomeProduto" [(ngModel)]="produtoEditando.nomeProduto" name="nomeProduto" />
+          </div>
+          <div>
+            <label for="marca">Marca</label>
+            <input id="marca" [(ngModel)]="produtoEditando.marca" name="marca" />
+          </div>
+          <div>
+            <label for="descricao">Descrição</label>
+            <input id="descricao" [(ngModel)]="produtoEditando.descricao" name="descricao" />
           </div>
           <div>
             <label for="imagemUrl">URL da Imagem</label>

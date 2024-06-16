@@ -76,6 +76,12 @@ export class ProdutosComponent implements OnInit {
     if (this.produtoEditando.nomeProduto !== this.produtoOriginal.nomeProduto) {
       produtoAtualizado.nomeProduto = this.produtoEditando.nomeProduto;
     }
+    if (this.produtoEditando.marca !== this.produtoOriginal.marca) {
+      produtoAtualizado.marca = this.produtoEditando.marca;
+    }
+    if (this.produtoEditando.descricao !== this.produtoOriginal.descricao) {
+      produtoAtualizado.descricao = this.produtoEditando.descricao;
+    }
     if (this.produtoEditando.imagemUrl !== this.produtoOriginal.imagemUrl) {
       produtoAtualizado.imagemUrl = this.produtoEditando.imagemUrl;
     }

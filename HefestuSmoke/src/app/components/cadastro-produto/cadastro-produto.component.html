@@ -1,42 +1,48 @@
 <main>
-    <section class="cadastro">
-      <div class="cadastro-container">
-        <h2>Cadastro de Produto</h2>
-        <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
-          <div class="mb-3">
-            <label for="nomeProduto" class="form-label">Nome do Produto</label>
-            <input [formControl]="cadastroForm.controls.nomeProduto" type="text" class="form-control" id="nomeProduto" placeholder="Nome do produto">
-            <div *ngIf="cadastroForm.get('nomeProduto')?.hasError('required') && cadastroForm.get('nomeProduto')?.touched" class="form-text text-danger">
-              Complete o campo
-            </div>
+  <section class="cadastro">
+    <div class="cadastro-container">
+      <h2>Cadastro de Produto</h2>
+      <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="nomeProduto" class="form-label">Nome do Produto</label>
+          <input [formControl]="cadastroForm.controls.nomeProduto" type="text" class="form-control" id="nomeProduto" placeholder="Nome do produto">
+          <div *ngIf="cadastroForm.get('nomeProduto')?.hasError('required') && cadastroForm.get('nomeProduto')?.touched" class="form-text text-danger">
+            Complete o campo
           </div>
-          <div class="mb-3">
-            <label for="descricao" class="form-label">Descrição</label>
-            <textarea [formControl]="cadastroForm.controls.descricao" class="form-control" id="descricao" placeholder="Descrição do produto"></textarea>
-            <div *ngIf="cadastroForm.get('descricao')?.hasError('required') && cadastroForm.get('descricao')?.touched" class="form-text text-danger">
-              Complete o campo
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="marca" class="form-label">Marca</label>
-            <input [formControl]="cadastroForm.controls.marca" type="text" class="form-control" id="marca" placeholder="Marca do produto">
-            <div *ngIf="cadastroForm.get('marca')?.hasError('required') && cadastroForm.get('marca')?.touched" class="form-text text-danger">
-              Complete o campo
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="valor" class="form-label">Valor</label>
-            <input [formControl]="cadastroForm.controls.valor" type="number" class="form-control" id="valor" placeholder="Valor do produto">
-            <div *ngIf="cadastroForm.get('valor')?.hasError('required') && cadastroForm.get('valor')?.touched" class="form-text text-danger">
-              Complete o campo
-            </div>
-          </div>
-          <button [disabled]="!cadastroForm.valid" type="submit" class="btn btn-black">Cadastrar</button>
-        </form>
-        <div class="alternative-action">
-          <a [routerLink]="''">Voltar</a>
         </div>
+        <div class="mb-3">
+          <label for="descricao" class="form-label">Descrição</label>
+          <textarea [formControl]="cadastroForm.controls.descricao" class="form-control" id="descricao" placeholder="Descrição do produto"></textarea>
+          <div *ngIf="cadastroForm.get('descricao')?.hasError('required') && cadastroForm.get('descricao')?.touched" class="form-text text-danger">
+            Complete o campo
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="marca" class="form-label">Marca</label>
+          <input [formControl]="cadastroForm.controls.marca" type="text" class="form-control" id="marca" placeholder="Marca do produto">
+          <div *ngIf="cadastroForm.get('marca')?.hasError('required') && cadastroForm.get('marca')?.touched" class="form-text text-danger">
+            Complete o campo
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="valor" class="form-label">Valor</label>
+          <input [formControl]="cadastroForm.controls.valor" type="number" class="form-control" id="valor" placeholder="Valor do produto">
+          <div *ngIf="cadastroForm.get('valor')?.hasError('required') && cadastroForm.get('valor')?.touched" class="form-text text-danger">
+            Complete o campo
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="imagemUrl" class="form-label">URL da Imagem</label>
+          <input [formControl]="cadastroForm.controls.imagemUrl" type="text" class="form-control" id="imagemUrl" placeholder="URL da imagem do produto">
+          <div *ngIf="cadastroForm.get('imagemUrl')?.hasError('required') && cadastroForm.get('imagemUrl')?.touched" class="form-text text-danger">
+            Complete o campo
+          </div>
+        </div>
+        <button [disabled]="!cadastroForm.valid" type="submit" class="btn btn-black">Cadastrar</button>
+      </form>
+      <div class="alternative-action">
+        <a [routerLink]="''">Voltar</a>
       </div>
-    </section>
-  </main>
-  
+    </div>
+  </section>
+</main>
