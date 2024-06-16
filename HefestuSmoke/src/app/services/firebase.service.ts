@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Database, ref, set, push, onValue, update } from '@angular/fire/database';
+import { Database, ref, set, push, onValue, update, orderByChild, equalTo } from '@angular/fire/database';
 import { map, Observable } from 'rxjs';
 import { query, get, child, getDatabase } from '@angular/fire/database';
 
@@ -43,6 +43,30 @@ export class FirebaseService {
   atualizarProduto(key: string, produto: any) {
     const produtoRef = ref(this.db, `produtos/${key}`);
     return update(produtoRef, produto);
+  }
+
+  validarUsuario(email: string, senha: string): Observable<any> {
+    const usersRef = ref(this.db, 'users');
+    const emailQuery = query(usersRef, orderByChild('email'), equalTo(email));
+
+    return new Observable((observer) => {
+      onValue(emailQuery, (snapshot) => {
+        let usuarioValido = null;
+        snapshot.forEach((childSnapshot) => {
+          const user = childSnapshot.val();
+          if (user.senha === senha) {
+            usuarioValido = {
+              key: childSnapshot.key,
+              ...childSnapshot.val()
+            };
+          }
+        });
+        observer.next(usuarioValido);
+        observer.complete();
+      }, (error) => {
+        observer.error(error);
+      });
+    });
   }
 
   // Adicione mais métodos conforme necessário
