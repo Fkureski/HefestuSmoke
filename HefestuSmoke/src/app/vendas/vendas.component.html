@@ -1,0 +1,33 @@
+<main>
+    <section class="vendas">
+      <div class="vendas-container">
+        <h2>Lista de Produtos para Venda</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Código</th>
+              <th scope="col">Nome</th>
+              <th scope="col" style="width: 20%;">Imagem</th>
+              <th scope="col">Valor</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let produto of produtos">
+              <th scope="row">{{ produto.key }}</th>
+              <td>{{ produto.nomeProduto }}</td>
+              <td><img [src]="produto.imagemUrl" width="30%" /></td>
+              <td>{{ produto.valor | currency:'BRL' }}</td>
+              <td>
+                <button class="btn btn-success" (click)="comprar(produto.key)">Comprar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="alternative-action">
+          <a [routerLink]="''">Voltar</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  
