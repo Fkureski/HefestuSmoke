@@ -1,27 +1,20 @@
 <main>
   <section class="cadastro">
     <div class="cadastro-container">
-      <h2>Lista de Produtos</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Nome</th>
-            <th scope="col" style="width: 20%;">Imagem</th>
-            <th scope="col">Valor</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let produto of produtos">
-            <td>{{ produto.nomeProduto }}</td>
-            <td><img [src]="produto.imagemUrl" width="30%" /></td>
-            <td>{{ produto.valor | currency:'BRL' }}</td>
-            <td>
-              <button class="btn btn-danger" (click)="excluir(produto.key)">Comprar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div *ngFor="let produto of produtos" class="produto-item">
+        <div class="produto-info">
+          <h2 class="produto-nome">{{ produto.nomeProduto }}</h2>
+          <img [src]="produto.imagemUrl" class="produto-imagem" />
+        </div>
+        <div class="produto-detalhes">
+          <p class="produto-descricao">{{ produto.descricao }}</p>
+          <p class="produto-valor">{{ produto.valor | currency:'BRL' }}</p>
+          <button class="btn-comprar" (click)="excluir(produto.key)">Comprar</button>
+        </div>
+      </div>
       <div class="alternative-action">
         <a [routerLink]="''">Voltar</a>
       </div>
+    </div>
+  </section>
+</main>
