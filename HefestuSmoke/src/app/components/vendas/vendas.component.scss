@@ -13,6 +13,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f9f9f9;
+  position: relative; 
 }
 
 .produto-info {
@@ -38,6 +39,7 @@
 .produto-detalhes {
   flex: 2;
   padding-left: 20px;
+  position: relative;
 }
 
 .produto-descricao {
@@ -53,6 +55,20 @@
 
 .produto-marca {
   color: #af33a9;
+}
+
+.produto-acoes {
+  position: absolute;
+  bottom: 1px;
+  right: 20px; 
+  text-align: right;
+}
+
+.quantidade {
+  font-size: 1em;
+  margin-right: 10px;
+  display: inline-block; 
+  color: #616161;
 }
 
 .btn-comprar {
