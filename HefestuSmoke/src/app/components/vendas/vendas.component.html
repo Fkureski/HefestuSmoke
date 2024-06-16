@@ -9,6 +9,7 @@
         <div class="produto-detalhes">
           <p class="produto-descricao">{{ produto.descricao }}</p>
           <p class="produto-valor">{{ produto.valor | currency:'BRL' }}</p>
+          <p class="produto-marca">{{ produto.marca }}</p>
           <button class="btn-comprar" (click)="excluir(produto.key)">Comprar</button>
         </div>
       </div>
