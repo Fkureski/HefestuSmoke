@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Database, ref, set, push, onValue, update, orderByChild, equalTo } from '@angular/fire/database';
-import { map, Observable } from 'rxjs';
+import { Database, ref, set, push, onValue, update, orderByChild, equalTo, remove } from '@angular/fire/database';
+import { Observable } from 'rxjs';
 import { query, get, child, getDatabase } from '@angular/fire/database';
 
 @Injectable({
@@ -38,6 +38,34 @@ export class FirebaseService {
         observer.error(error);
       });
     });
+  }
+
+  listarUsuarios(): Observable<any[]> {
+    const usersRef = ref(this.db, 'users');
+    return new Observable((observer) => {
+      onValue(usersRef, (snapshot) => {
+        const usuarios: any[] = [];
+        snapshot.forEach((childSnapshot) => {
+          usuarios.push({
+            key: childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+        observer.next(usuarios);
+        observer.complete();
+      }, (error) => {
+        observer.error(error);
+      });
+    });
+  }
+  atualizarUsuario(key: string, usuario: any) {
+    const usuarioRef = ref(this.db, `users/${key}`);
+    return update(usuarioRef, usuario);
+  }
+
+  excluirUsuario(key: string) {
+    const usuarioRef = ref(this.db, `users/${key}`);
+    return remove(usuarioRef);
   }
 
   atualizarProduto(key: string, produto: any) {

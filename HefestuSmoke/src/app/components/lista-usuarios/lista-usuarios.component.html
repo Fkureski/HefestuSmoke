@@ -1,1 +1,73 @@
-<p>lista-usuarios works!</p>
+<main>
+    <section class="cadastro">
+      <div class="cadastro-container">
+        <h2>Lista de Usuários</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Código</th>
+              <th scope="col">Nome do Usuário</th>
+              <th scope="col">CPF</th>
+              <th scope="col">Email</th>
+              <th scope="col">Senha</th>
+              <th scope="col">Data de Nascimento</th>
+              <th scope="col">Telefone</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios">
+              <th scope="row">{{ usuario.key }}</th>
+              <td>{{ usuario.nome }}</td>
+              <td>{{ usuario.cpf }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>{{ usuario.senha }}</td>
+              <td>{{ usuario.dataNascimento }}</td>
+              <td>{{ usuario.telefone }}</td>
+              <td>
+                <button class="btn btn-warning" (click)="editar(usuario)">Editar</button>
+                &nbsp;
+                <button class="btn btn-danger" (click)="excluir(usuario.key)">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="alternative-action">
+          <a [routerLink]="['/']">Voltar</a>
+        </div>
+  
+        <!-- Formulário de edição -->
+        <div *ngIf="usuarioEditando">
+          <h2>Editar Usuário</h2>
+          <form (ngSubmit)="atualizarUsuario()">
+            <div>
+              <label for="nomeUsuario">Nome</label>
+              <input id="nomeUsuario" [(ngModel)]="usuarioEditando.nome" name="nomeUsuario" />
+            </div>
+            <div>
+              <label for="cpf">CPF</label>
+              <input id="cpf" [(ngModel)]="usuarioEditando.cpf" name="cpf" />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" [(ngModel)]="usuarioEditando.email" name="email" />
+            </div>
+            <div>
+              <label for="senha">Senha</label>
+              <input id="senha" [(ngModel)]="usuarioEditando.senha" name="senha" />
+            </div>
+            <div>
+              <label for="dataNascimento">Data de Nascimento</label>
+              <input id="dataNascimento" type="date" [(ngModel)]="usuarioEditando.dataNascimento" name="dataNascimento" />
+            </div>
+            <div>
+              <label for="telefone">Telefone</label>
+              <input id="telefone" type="tel" [(ngModel)]="usuarioEditando.telefone" name="telefone" />
+            </div>
+            <button type="submit" class="btn btn-success">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  
