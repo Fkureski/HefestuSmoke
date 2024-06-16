@@ -28,9 +28,11 @@
 .produto-imagem {
   width: 100%;
   max-width: 200px;
+  max-height: 200px;
   border-radius: 8px;
   object-fit: cover;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .produto-detalhes {
@@ -82,5 +84,15 @@
 }
 
 .alternative-action a:hover {
-  color: #2968c8;
+  color: #000000;
+}
+
+.fixed-action {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
 }
