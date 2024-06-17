@@ -101,15 +101,15 @@ export class VendasComponent implements OnInit {
   }
 
   closeModal() {
-    if (this.produtoSelecionado) {
-      this.diminuir(this.produtoSelecionado.key);
-    }
     this.isModalActive = false;
+    this.produtoSelecionado = null;
   }
 
   onSubmit() {
     if (this.isCartaoValido()) {
-      alert('Compra Realizada!');
+      console.log('Cartão cadastrado com sucesso:', this.cartao);
+      alert('Cartão cadastrado com sucesso!');
+      this.diminuir(this.produtoSelecionado.key);
       this.closeModal();
     } else {
       console.error('Dados do cartão inválidos.');
