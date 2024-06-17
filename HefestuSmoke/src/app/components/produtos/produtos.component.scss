@@ -1,60 +1,100 @@
 /* Estilização para ProdutosComponent */
 
 .cadastro-container {
-    margin: 0 auto;
-    max-width: 1200px;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-  }
-  
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 20px;
+  text-align: center;
+}
+
+.table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #f4f4f4;
+}
+
+.table img {
+  border-radius: 10px;
+}
+
+.btn {
+  padding: 8px 16px;
+  margin: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-warning {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #d9534f;
+  color: white;
+}
+
+.alternative-action {
+  margin-top: 20px;
+}
+
+.alternative-action a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.alternative-action a:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
   .table th, .table td {
-    padding: 12px;
-    border: 1px solid #ddd;
+    padding: 10px;
+    font-size: 14px;
   }
-  
-  .table th {
-    background-color: #f4f4f4;
-  }
-  
-  .table img {
-    border-radius: 10px;
-  }
-  
+
   .btn {
-    padding: 8px 16px;
-    margin: 4px;
-    border: none;
-    cursor: pointer;
+    padding: 6px 12px;
+    font-size: 14px;
   }
-  
-  .btn-warning {
-    background-color: #f0ad4e;
-    color: white;
-  }
-  
-  .btn-danger {
-    background-color: #d9534f;
-    color: white;
-  }
-  
+
   .alternative-action {
-    margin-top: 20px;
+    margin-top: 15px;
   }
-  
+
   .alternative-action a {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
-    cursor: pointer;
+    font-size: 14px;
   }
-  
-  .alternative-action a:hover {
-    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .table th, .table td {
+    padding: 8px;
+    font-size: 12px;
   }
-  
+
+  .btn {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .alternative-action {
+    margin-top: 10px;
+  }
+
+  .alternative-action a {
+    font-size: 12px;
+  }
+}
