@@ -6,13 +6,13 @@ import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-vendas',
+  selector: 'app-narguiles',
   templateUrl: './narguiles.component.html',
   standalone: true,
   imports: [CommonModule, RouterLink, FormsModule],
   styleUrls: ['./narguiles.component.scss']
 })
-export class VendasComponent implements OnInit {
+export class narguilesComponent implements OnInit {
   produtos$: Observable<any[]>;
   produtos: any[] = [];
   produtoSelecionado: any = null; // Produto selecionado ao abrir o modal
