@@ -1,1 +1,25 @@
-<p>navbar-adm works!</p>
+<nav class="navbar navbar-expand-lg bg-black mb-3">
+	<div class="container-fluid">
+		<a class="navbar-brand fs-1 text-light" [routerLink]="'.'">HefestuSmoke</a>
+
+		<button class="navbar-toggler custom-button" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">&#9776;</button>
+
+		<div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+			<ul class="navbar-nav gap-2">
+				<li class="nav-item">
+					<a class="nav-link text-custom" [routerLink]="'/produtos'" (click)="isMenuCollapsed = true">Produtos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-custom" [routerLink]="'/cadastroProduto'" (click)="isMenuCollapsed = true">Cadastro Produto</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-custom" [routerLink]="'/listaUsuarios'" (click)="isMenuCollapsed = true">Usuários</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-custom" [routerLink]="''" (click)="isMenuCollapsed = true">Logout</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+

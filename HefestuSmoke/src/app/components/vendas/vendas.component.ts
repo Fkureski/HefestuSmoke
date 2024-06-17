@@ -108,7 +108,7 @@ export class VendasComponent implements OnInit {
   onSubmit() {
     if (this.isCartaoValido()) {
       console.log('Cartão cadastrado com sucesso:', this.cartao);
-      alert('Cartão cadastrado com sucesso!');
+      alert('Compra realizada com sucesso!');
       this.diminuir(this.produtoSelecionado.key);
       this.closeModal();
     } else {

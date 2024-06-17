@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms'; // Importando FormsModule
+import { NavbarAdmComponent } from '../navbar-adm/navbar-adm.component';
 
 @Component({
   selector: 'app-produtos',
   templateUrl: './produtos.component.html',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule], // Adicionando FormsModule
+  imports: [CommonModule, RouterLink, FormsModule, NavbarAdmComponent], // Adicionando FormsModule
   styleUrls: ['./produtos.component.scss']  // Atualize para SCSS
 })
 export class ProdutosComponent implements OnInit {

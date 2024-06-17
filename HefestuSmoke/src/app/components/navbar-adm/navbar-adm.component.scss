@@ -1,0 +1,19 @@
+.text-custom {
+    color: #fffbfb;
+}
+
+.custom-button{
+    color: white;
+}
+@media (min-width: 769px) {
+    .collapse{
+        display: flex;
+        justify-content: end;
+        margin-right: 50px;
+        font-size: 20px;
+    }
+
+    .navbar-brand{
+        margin-left: 20px;
+    }
+}
