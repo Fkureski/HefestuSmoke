@@ -66,13 +66,27 @@
   font-size: 1em;
   margin-right: 10px;
   display: inline-block;
-  color: #616161;
+  color: #454545;
 }
+
+.fixed-action[_ngcontent-ng-c3217186742]{
+  padding: 0%;
+}
+
+.custom-btn {
+  background-color: black;
+  color: white !important; /* Use !important para garantir que a cor seja aplicada */
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 4px;
+  display: inline-block;
+}
+
 
 .btn-comprar {
   font-size: 1em;
   color: #fff;
-  background-color: #3483fa;
+  background-color: #000000;
   border: none;
   border-radius: 4px;
   cursor: pointer;

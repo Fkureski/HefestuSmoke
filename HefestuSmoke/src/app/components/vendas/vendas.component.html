@@ -3,12 +3,12 @@
     <div class="cadastro-container">
       <div *ngFor="let produto of produtos" class="produto-item">
         <div class="produto-info">
-          <h2 class="produto-nome">{{ produto.nomeProduto }}</h2>
+          <h2 class="produto-nome"><b>{{ produto.nomeProduto }}</b></h2>
           <img [src]="produto.imagemUrl" class="produto-imagem" />
         </div>
         <div class="produto-detalhes">
           <p class="produto-descricao">{{ produto.descricao }}</p>
-          <p class="produto-marca">{{ produto.marca }}</p>
+          <p class="produto-marca"><b>{{ produto.marca }} ©</b></p>
           <button class="btn-comprar" (click)="openModal(produto)">Comprar</button>
           <div class="produto-acoes">
             <p class="produto-valor">{{ produto.valor | currency:'BRL' }}</p>
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="alternative-action fixed-action">
-      <a [routerLink]="''">Voltar</a>
+      <a class="custom-btn" [routerLink]="''">Voltar</a>
     </div>
   </section>
 
