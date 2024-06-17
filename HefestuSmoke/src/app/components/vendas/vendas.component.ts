@@ -3,20 +3,26 @@ import { Database, ref, push, onValue, remove, update } from '@angular/fire/data
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-vendas',
   templateUrl: './vendas.component.html',
   standalone: true,
   imports: [CommonModule, RouterLink, FormsModule],
-  styleUrls: ['./vendas.component.scss']  
+  styleUrls: ['./vendas.component.scss']
 })
 export class VendasComponent implements OnInit {
   produtos$: Observable<any[]>;
   produtos: any[] = [];
-  produtoEditando: any = null;
-  produtoOriginal: any = null;
+  produtoSelecionado: any = null; // Produto selecionado ao abrir o modal
+  isModalActive = false; // Adicionado para controlar o modal
+  cartao = {
+    nome: '',
+    numero: '',
+    validade: '',
+    cvv: ''
+  };
 
   constructor(private db: Database) {
     this.produtos$ = this.listar(); // Inicializa a lista de produtos
@@ -57,16 +63,17 @@ export class VendasComponent implements OnInit {
     return remove(produtoRef); // Remove um produto
   }
 
-  diminuir(Key: string): void {
-    const produtoIndex = this.produtos.findIndex(p => p.key === Key);
+  diminuir(produtoKey: string): void {
+    const produtoIndex = this.produtos.findIndex(p => p.key === produtoKey);
     if (produtoIndex !== -1) {
       const produto = this.produtos[produtoIndex];
       if (produto.quantidade > 0) {
         produto.quantidade -= 1;
-        if (produto.quantidade == 0) {
-          this.excluir(Key);
+        if (produto.quantidade === 0) {
+          this.excluir(produtoKey);
         } else {
-          const produtoRef = ref(this.db, `produtos/${Key}`);
+          // Atualizar a quantidade no banco de dados
+          const produtoRef = ref(this.db, `produtos/${produtoKey}`);
           update(produtoRef, { quantidade: produto.quantidade });
         }
       }
@@ -80,5 +87,42 @@ export class VendasComponent implements OnInit {
     }).catch(error => {
       console.error(`Erro ao excluir produto com key: ${key}`, error);
     });
+  }
+
+  openModal(produto: any) {
+    this.isModalActive = true;
+    this.produtoSelecionado = produto;
+    this.cartao = {
+      nome: '',
+      numero: '',
+      validade: '',
+      cvv: ''
+    };
+  }
+
+  closeModal() {
+    this.isModalActive = false;
+    this.produtoSelecionado = null;
+  }
+
+  onSubmit() {
+    if (this.isCartaoValido()) {
+      console.log('Cartão cadastrado com sucesso:', this.cartao);
+      alert('Cartão cadastrado com sucesso!');
+      this.diminuir(this.produtoSelecionado.key);
+      this.closeModal();
+    } else {
+      console.error('Dados do cartão inválidos.');
+      alert('Dados do cartão inválidos.');
+    }
+  }
+
+  isCartaoValido(): boolean {
+    const nomeValido = this.cartao.nome.trim() !== '';
+    const numeroValido = /^[0-9]{16}$/.test(this.cartao.numero);
+    const validadeValida = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/.test(this.cartao.validade);
+    const cvvValido = /^[0-9]{3,4}$/.test(this.cartao.cvv);
+
+    return nomeValido && numeroValido && validadeValida && cvvValido;
   }
 }
