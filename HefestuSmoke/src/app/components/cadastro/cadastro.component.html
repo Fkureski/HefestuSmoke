@@ -47,8 +47,9 @@
         </div>
         <button [disabled]="!cadastroForm.valid" type="submit" class="btn btn-black">Cadastrar</button>
       </form>
+      <div *ngIf="errorMessage" class="text-danger mt-3">{{ errorMessage }}</div>
       <div class="alternative-action">
-        <a [routerLink]="['']">Voltar</a>
+        <a [routerLink]="'/login'">Voltar</a>
       </div>
     </div>
   </section>

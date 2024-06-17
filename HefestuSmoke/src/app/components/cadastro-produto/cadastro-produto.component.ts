@@ -35,7 +35,7 @@ export class CadastroProdutoComponent implements OnInit {
     
     imagemUrl: new FormControl<string>('', [
       Validators.required,
-      Validators.pattern('(https?://.*\.)') 
+      Validators.pattern('(https?://.*\.(?:png|jpg|jpeg|gif|svg|webp))') 
     ]),
   });
 

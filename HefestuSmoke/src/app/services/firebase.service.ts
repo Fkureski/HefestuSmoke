@@ -15,6 +15,51 @@ export class FirebaseService {
     return push(usersRef, user);
   }
 
+    // Método para verificar se um usuário já existe pelo email
+    verificarEmailExistente(email: string): Observable<boolean> {
+      const usersRef = ref(this.db, 'users');
+      const emailQuery = query(usersRef, orderByChild('email'), equalTo(email));
+  
+      return new Observable((observer) => {
+        onValue(emailQuery, (snapshot) => {
+          observer.next(snapshot.exists());
+          observer.complete();
+        }, (error) => {
+          observer.error(error);
+        });
+      });
+    }
+  
+    // Método para verificar se um usuário já existe pelo CPF
+    verificarCpfExistente(cpf: string): Observable<boolean> {
+      const usersRef = ref(this.db, 'users');
+      const cpfQuery = query(usersRef, orderByChild('cpf'), equalTo(cpf));
+  
+      return new Observable((observer) => {
+        onValue(cpfQuery, (snapshot) => {
+          observer.next(snapshot.exists());
+          observer.complete();
+        }, (error) => {
+          observer.error(error);
+        });
+      });
+    }
+  
+    // Método para verificar se um usuário já existe pelo telefone
+    verificarTelefoneExistente(telefone: string): Observable<boolean> {
+      const usersRef = ref(this.db, 'users');
+      const telefoneQuery = query(usersRef, orderByChild('telefone'), equalTo(telefone));
+  
+      return new Observable((observer) => {
+        onValue(telefoneQuery, (snapshot) => {
+          observer.next(snapshot.exists());
+          observer.complete();
+        }, (error) => {
+          observer.error(error);
+        });
+      });
+    }
+
   // Método para criar produto
   createProduto(produto: any) {
     const produtosRef = ref(this.db, 'produtos');
