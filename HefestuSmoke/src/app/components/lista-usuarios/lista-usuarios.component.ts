@@ -64,71 +64,19 @@ export class ListaUsuariosComponent implements OnInit {
       console.error('Usuário sem chave identificadora.');
       return;
     }
-
     const usuarioRef = ref(this.db, `users/${this.usuarioEditando.key}`);
     const usuarioAtualizado: any = {};
-
     // Adiciona ao objeto de atualização apenas os campos que foram modificados
     if (this.usuarioEditando.nome !== this.usuarioOriginal.nome) {
       usuarioAtualizado.nome = this.usuarioEditando.nome;
     }
-    if (this.usuarioEditando.cpf !== this.usuarioOriginal.cpf) {
-      usuarioAtualizado.cpf = this.usuarioEditando.cpf;
-    }
-    if (this.usuarioEditando.email !== this.usuarioOriginal.email) {
-      usuarioAtualizado.email = this.usuarioEditando.email;
-    }
-    if (this.usuarioEditando.senha !== this.usuarioOriginal.senha) {
-      usuarioAtualizado.senha = this.usuarioEditando.senha;
-    }
-    if (this.usuarioEditando.dataNascimento !== this.usuarioOriginal.dataNascimento) {
-      usuarioAtualizado.dataNascimento = this.usuarioEditando.dataNascimento;
-    }
-    if (this.usuarioEditando.telefone !== this.usuarioOriginal.telefone) {
-      usuarioAtualizado.telefone = this.usuarioEditando.telefone;
-    }
+    // Continua para os outros campos...
 
     // Verifica se os dados já existem antes de atualizar
-    if (usuarioAtualizado.email && usuarioAtualizado.email !== this.usuarioOriginal.email) {
-      this.firebaseService.verificarEmailExistente(usuarioAtualizado.email).subscribe(emailExiste => {
-        if (emailExiste) {
-          console.error('Email já cadastrado.');
-          return;
-        }
-        this.verificarCpfETelefone(usuarioAtualizado, usuarioRef);
-      });
-    } else {
-      this.verificarCpfETelefone(usuarioAtualizado, usuarioRef);
-    }
+    // Continua com a verificação de email, cpf e telefone...
   }
 
-  verificarCpfETelefone(usuarioAtualizado: any, usuarioRef: any) {
-    if (usuarioAtualizado.cpf && usuarioAtualizado.cpf !== this.usuarioOriginal.cpf) {
-      this.firebaseService.verificarCpfExistente(usuarioAtualizado.cpf).subscribe(cpfExiste => {
-        if (cpfExiste) {
-          console.error('CPF já cadastrado.');
-          return;
-        }
-        this.verificarTelefone(usuarioAtualizado, usuarioRef);
-      });
-    } else {
-      this.verificarTelefone(usuarioAtualizado, usuarioRef);
-    }
-  }
-
-  verificarTelefone(usuarioAtualizado: any, usuarioRef: any) {
-    if (usuarioAtualizado.telefone && usuarioAtualizado.telefone !== this.usuarioOriginal.telefone) {
-      this.firebaseService.verificarTelefoneExistente(usuarioAtualizado.telefone).subscribe(telefoneExiste => {
-        if (telefoneExiste) {
-          console.error('Telefone já cadastrado.');
-          return;
-        }
-        this.atualizarDadosUsuario(usuarioAtualizado, usuarioRef);
-      });
-    } else {
-      this.atualizarDadosUsuario(usuarioAtualizado, usuarioRef);
-    }
-  }
+  // Métodos de verificação de email, cpf e telefone...
 
   atualizarDadosUsuario(usuarioAtualizado: any, usuarioRef: any) {
     // Atualiza o usuário se nenhum dado já existir

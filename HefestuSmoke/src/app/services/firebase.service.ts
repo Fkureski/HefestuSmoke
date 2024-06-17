@@ -10,63 +10,74 @@ export class FirebaseService {
   constructor(private db: Database) { }
 
   // Método para criar usuário
+  // Recebe um objeto usuário como parâmetro
+  // Usa a função push para adicionar o usuário à localização 'users' no banco de dados
   createUser(user: any) {
     const usersRef = ref(this.db, 'users');
     return push(usersRef, user);
   }
 
-    // Método para verificar se um usuário já existe pelo email
-    verificarEmailExistente(email: string): Observable<boolean> {
-      const usersRef = ref(this.db, 'users');
-      const emailQuery = query(usersRef, orderByChild('email'), equalTo(email));
-  
-      return new Observable((observer) => {
-        onValue(emailQuery, (snapshot) => {
-          observer.next(snapshot.exists());
-          observer.complete();
-        }, (error) => {
-          observer.error(error);
-        });
+  // Método para verificar se um usuário já existe pelo email
+  // Recebe uma string de email como parâmetro
+  // Retorna um Observable booleano que indica se o email existe ou não
+  verificarEmailExistente(email: string): Observable<boolean> {
+    const usersRef = ref(this.db, 'users');
+    const emailQuery = query(usersRef, orderByChild('email'), equalTo(email));
+
+    return new Observable((observer) => {
+      onValue(emailQuery, (snapshot) => {
+        observer.next(snapshot.exists());
+        observer.complete();
+      }, (error) => {
+        observer.error(error);
       });
-    }
-  
-    // Método para verificar se um usuário já existe pelo CPF
-    verificarCpfExistente(cpf: string): Observable<boolean> {
-      const usersRef = ref(this.db, 'users');
-      const cpfQuery = query(usersRef, orderByChild('cpf'), equalTo(cpf));
-  
-      return new Observable((observer) => {
-        onValue(cpfQuery, (snapshot) => {
-          observer.next(snapshot.exists());
-          observer.complete();
-        }, (error) => {
-          observer.error(error);
-        });
+    });
+  }
+
+  // Método para verificar se um usuário já existe pelo CPF
+  // Recebe uma string de CPF como parâmetro
+  // Retorna um Observable booleano que indica se o CPF existe ou não
+  verificarCpfExistente(cpf: string): Observable<boolean> {
+    const usersRef = ref(this.db, 'users');
+    const cpfQuery = query(usersRef, orderByChild('cpf'), equalTo(cpf));
+
+    return new Observable((observer) => {
+      onValue(cpfQuery, (snapshot) => {
+        observer.next(snapshot.exists());
+        observer.complete();
+      }, (error) => {
+        observer.error(error);
       });
-    }
-  
-    // Método para verificar se um usuário já existe pelo telefone
-    verificarTelefoneExistente(telefone: string): Observable<boolean> {
-      const usersRef = ref(this.db, 'users');
-      const telefoneQuery = query(usersRef, orderByChild('telefone'), equalTo(telefone));
-  
-      return new Observable((observer) => {
-        onValue(telefoneQuery, (snapshot) => {
-          observer.next(snapshot.exists());
-          observer.complete();
-        }, (error) => {
-          observer.error(error);
-        });
+    });
+  }
+
+  // Método para verificar se um usuário já existe pelo telefone
+  // Recebe uma string de telefone como parâmetro
+  // Retorna um Observable booleano que indica se o telefone existe ou não
+  verificarTelefoneExistente(telefone: string): Observable<boolean> {
+    const usersRef = ref(this.db, 'users');
+    const telefoneQuery = query(usersRef, orderByChild('telefone'), equalTo(telefone));
+
+    return new Observable((observer) => {
+      onValue(telefoneQuery, (snapshot) => {
+        observer.next(snapshot.exists());
+        observer.complete();
+      }, (error) => {
+        observer.error(error);
       });
-    }
+    });
+  }
 
   // Método para criar produto
+  // Recebe um objeto produto como parâmetro
+  // Usa a função push para adicionar o produto à localização 'produtos' no banco de dados
   createProduto(produto: any) {
     const produtosRef = ref(this.db, 'produtos');
     return push(produtosRef, produto);
   }
 
   // Método para listar produtos
+  // Retorna um Observable de array de produtos
   listar(): Observable<any[]> {
     const produtosRef = ref(this.db, 'produtos');
     const produtosQuery = query(produtosRef);
@@ -89,6 +100,7 @@ export class FirebaseService {
   }
 
   // Método para listar usuários
+ // Retorna um Observable de array de usuários
   listarUsuarios(): Observable<any[]> {
     const usersRef = ref(this.db, 'users');
     return new Observable((observer) => {
@@ -109,12 +121,17 @@ export class FirebaseService {
   }
 
   // Método para atualizar usuário
+  // Recebe uma chave (key) como parâmetro que identifica o usuário a ser atualizado
+  // Recebe um objeto usuário como parâmetro com as informações atualizadas
+  // Usa a função update para atualizar o usuário na localização específica no banco de dados
   atualizarUsuario(key: string, usuario: any) {
     const usuarioRef = ref(this.db, `users/${key}`);
     return update(usuarioRef, usuario);
   }
 
   // Método para excluir usuário
+  // Recebe uma chave (key) como parâmetro que identifica o usuário a ser excluído
+  // Usa a função remove para excluir o usuário na localização específica no banco de dados
   excluirUsuario(key: string) {
     const usuarioRef = ref(this.db, `users/${key}`);
     return remove(usuarioRef);
@@ -126,7 +143,9 @@ export class FirebaseService {
     return update(produtoRef, produto);
   }
 
-  // Novo método para validar usuário pelo email e senha
+  // Método para validar usuário por email e senha
+  // Recebe uma string de email e uma string de senha como parâmetros
+  // Retorna um Observable que emite o objeto de usuário validado se o email e senha coincidirem, ou nulo caso contrário
   validarUsuario(email: string, senha: string): Observable<any> {
     const usersRef = ref(this.db, 'users');
     const emailQuery = query(usersRef, orderByChild('email'), equalTo(email));

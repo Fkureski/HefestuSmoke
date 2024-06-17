@@ -12,6 +12,7 @@ import { FirebaseService } from '../../services/firebase.service';
   styleUrls: ['./cadastro-produto.component.scss']
 })
 export class CadastroProdutoComponent implements OnInit {
+  // Cria um FormGroup para o formulário de cadastro de produto com os campos e validações
   cadastroForm = new FormGroup({
     nomeProduto: new FormControl<string>('', [
       Validators.required,
@@ -32,7 +33,6 @@ export class CadastroProdutoComponent implements OnInit {
     quantidade: new FormControl<number | null>(null, [
       Validators.required,
     ]),
-    
     imagemUrl: new FormControl<string>('', [
       Validators.required,
       Validators.pattern('(https?://.*\.(?:png|jpg|jpeg|gif|svg|webp))') 
@@ -43,17 +43,20 @@ export class CadastroProdutoComponent implements OnInit {
 
   ngOnInit() {}
 
+  // Função acionada quando o formulário é submetido
   onSubmit() {
+    // Verifica se o formulário é válido
     if (this.cadastroForm.valid) {
+      // Chama o serviço Firebase para criar o produto com os dados do formulário
       this.firebaseService.createProduto(this.cadastroForm.value)
         .then(() => {
           console.log('Produto criado com sucesso');
-          this.cadastroForm.reset(); 
-          alert("produto Salvo com Sucesso")
+          this.cadastroForm.reset(); // Reseta o formulário após o sucesso
+          alert("Produto salvo com sucesso");
         })
         .catch((error) => {
           console.error('Erro ao criar produto:', error);
-          alert("erro ao Cadastrar Produto")
+          alert("Erro ao cadastrar produto");
         });
     }
   }

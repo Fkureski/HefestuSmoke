@@ -100,3 +100,13 @@ export class CadastroComponent implements OnInit {
     }
   }
 }
+// Esse código implementa um componente em Angular 
+// para o cadastro de usuários. 
+// O componente possui um formulário reativo com campos para nome, CPF, email, data de nascimento, telefone, senha e 
+// um campo admin que é inicializado como falso. 
+ 
+// A função  onClick()  é acionada quando o botão é clicado para submeter o formulário de cadastro. 
+// Ela verifica se o formulário é válido e se os campos obrigatórios foram preenchidos corretamente. 
+// Em seguida, verifica se o email, CPF e telefone já estão cadastrados no sistema. 
+// Se não estiverem cadastrados, o usuário é criado no Firebase e o formulário é resetado. 
+// Em caso de erro, mensagens de erro são exibidas. 

@@ -34,11 +34,13 @@ export class VendasComponent implements OnInit {
     });
   }
 
+  // Função para adicionar um novo produto ao banco de dados
   createProduto(produto: any) {
     const produtosRef = ref(this.db, 'produtos');
     return push(produtosRef, produto); // Adiciona um novo produto
   }
 
+  // Função para listar os produtos do banco de dados
   listar(): Observable<any[]> {
     const produtosRef = ref(this.db, 'produtos');
     return new Observable((observer) => {
@@ -58,11 +60,13 @@ export class VendasComponent implements OnInit {
     });
   }
 
+  // Função para excluir um produto do banco de dados
   excluirProduto(key: string) {
     const produtoRef = ref(this.db, `produtos/${key}`);
     return remove(produtoRef); // Remove um produto
   }
 
+  // Função para diminuir a quantidade de um produto
   diminuir(produtoKey: string): void {
     const produtoIndex = this.produtos.findIndex(p => p.key === produtoKey);
     if (produtoIndex !== -1) {
@@ -80,6 +84,7 @@ export class VendasComponent implements OnInit {
     }
   }
 
+  // Função para excluir um produto da lista local
   excluir(key: string) {
     this.excluirProduto(key).then(() => {
       console.log(`Produto com key: ${key} excluído`);
@@ -89,6 +94,7 @@ export class VendasComponent implements OnInit {
     });
   }
 
+  // Função para abrir o modal de compra
   openModal(produto: any) {
     this.isModalActive = true;
     this.produtoSelecionado = produto;
@@ -100,11 +106,13 @@ export class VendasComponent implements OnInit {
     };
   }
 
+  // Função para fechar o modal de compra
   closeModal() {
     this.isModalActive = false;
     this.produtoSelecionado = null;
   }
 
+  // Função acionada ao submeter o formulário de compra
   onSubmit() {
     if (this.isCartaoValido()) {
       console.log('Cartão cadastrado com sucesso:', this.cartao);
@@ -117,12 +125,12 @@ export class VendasComponent implements OnInit {
     }
   }
 
+  // Função para validar os dados do cartão de crédito
   isCartaoValido(): boolean {
     const nomeValido = this.cartao.nome.trim() !== '';
     const numeroValido = /^[0-9]{16}$/.test(this.cartao.numero);
     const validadeValida = /^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/.test(this.cartao.validade);
     const cvvValido = /^[0-9]{3,4}$/.test(this.cartao.cvv);
-
     return nomeValido && numeroValido && validadeValida && cvvValido;
   }
 }

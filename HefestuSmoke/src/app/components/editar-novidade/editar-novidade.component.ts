@@ -6,6 +6,7 @@ import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NovidadesService } from '../../services/novidades.service';
 import { NavbarAdmComponent } from '../navbar-adm/navbar-adm.component';
+
 @Component({
   selector: 'app-editar-novidade',
   standalone: true,
@@ -25,10 +26,11 @@ export class EditarNovidadeComponent {
 
   ngOnInit(): void {
     this.novidades$.subscribe(novidades => {
-      this.novidades = novidades;
+      this.novidades = novidades; // Atualiza a lista de novidades na inicialização
     });
   }
 
+  // Função para listar as novidades do banco de dados
   listarNovidades(): Observable<any[]> {
     const novidadesRef = ref(this.db, 'novidades');
     return new Observable((observer) => {
@@ -48,25 +50,26 @@ export class EditarNovidadeComponent {
     });
   }
 
+  // Função para excluir uma novidade do banco de dados
   excluirNovidade(key: string) {
     const novidadeRef = ref(this.db, `novidades/${key}`);
     return remove(novidadeRef); // Remove uma novidade pelo key
   }
 
+  // Função para editar uma novidade
   editar(novidade: any) {
     this.novidadeEditando = { ...novidade }; // Copia a novidade a ser editada
     this.novidadeOriginal = { ...novidade }; // Guarda os valores originais da novidade
   }
 
+  // Função para atualizar uma novidade
   atualizarNovidade() {
     if (!this.novidadeEditando.key) {
       console.error('Novidade sem chave identificadora.');
       return;
     }
-
     const novidadeRef = ref(this.db, `novidades/${this.novidadeEditando.key}`);
     const novidadeAtualizada: any = {};
-
     // Adiciona ao objeto de atualização apenas os campos que foram modificados
     if (this.novidadeEditando.name !== this.novidadeOriginal.name) {
       novidadeAtualizada.name = this.novidadeEditando.name;
@@ -74,7 +77,6 @@ export class EditarNovidadeComponent {
     if (this.novidadeEditando.email !== this.novidadeOriginal.email) {
       novidadeAtualizada.email = this.novidadeEditando.email;
     }
-
     update(novidadeRef, novidadeAtualizada).then(() => {
       this.novidadeEditando = null; // Reseta a novidade em edição
       this.novidadeOriginal = null; // Reseta a novidade original
@@ -84,6 +86,7 @@ export class EditarNovidadeComponent {
     });
   }
 
+  // Função para excluir uma novidade
   excluir(key: string) {
     this.excluirNovidade(key).then(() => {
       this.novidades = this.novidades.filter(novidade => novidade.key !== key); // Atualiza a lista local de novidades
