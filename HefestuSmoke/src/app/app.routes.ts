@@ -6,6 +6,7 @@ import { CadastroProdutoComponent } from './components/cadastro-produto/cadastro
 import { ProdutosComponent } from './components/produtos/produtos.component';
 import { VendasComponent } from './components/vendas/vendas.component';
 import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuarios.component';
+import { narguilesComponent } from './components/narguiles/narguiles.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -14,6 +15,6 @@ export const routes: Routes = [
     { path: 'cadastroProduto', component: CadastroProdutoComponent},
     { path: 'produtos', component: ProdutosComponent},
     { path: 'vendas', component: VendasComponent},
-    { path: 'lista-usuarios', component: ListaUsuariosComponent},
     { path: 'listaUsuarios', component: ListaUsuariosComponent},
+    { path: 'narguiles', component: narguilesComponent},
 ];
