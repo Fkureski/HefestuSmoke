@@ -1,0 +1,25 @@
+<main>
+    <section class="cadastro">
+      <div class="cadastro-container">
+        <div *ngFor="let produto of produtos" class="produto-item">
+          <div class="produto-info">
+            <h2 class="produto-nome">{{ produto.nomeProduto }}</h2>
+            <img [src]="produto.imagemUrl" class="produto-imagem" />
+          </div>
+          <div class="produto-detalhes">
+            <p class="produto-descricao">{{ produto.descricao }}</p>
+            <p class="produto-marca">{{ produto.marca }}</p>
+            <div class="produto-acoes">
+              <p class="produto-valor">{{ produto.valor | currency:'BRL' }}</p>
+              <p class="quantidade">Unidades: {{ produto.quantidade }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="alternative-action fixed-action">
+        <a [routerLink]="''">Voltar</a>
+      </div>
+    </section>
+
+  </main>
+  
