@@ -36,34 +36,35 @@
 
 
       <!-- Formulário de edição -->
-      <div *ngIf="produtoEditando">
-        <h2>Editar Produto</h2>
-        <form (ngSubmit)="atualizarProduto()">
-          <div>
+      <div *ngIf="produtoEditando" class="container mt-4">
+        <h2 class="text-center mb-4">Editar Produto</h2>
+        <form (ngSubmit)="atualizarProduto()" class="bg-light p-4 rounded shadow">
+          <div class="form-group">
             <label for="nomeProduto">Nome</label>
-            <input id="nomeProduto" [(ngModel)]="produtoEditando.nomeProduto" name="nomeProduto" />
+            <input id="nomeProduto" [(ngModel)]="produtoEditando.nomeProduto" name="nomeProduto" class="form-control" />
           </div>
-          <div>
+          <div class="form-group">
             <label for="marca">Marca</label>
-            <input id="marca" [(ngModel)]="produtoEditando.marca" name="marca" />
+            <input id="marca" [(ngModel)]="produtoEditando.marca" name="marca" class="form-control" />
           </div>
-          <div>
+          <div class="form-group">
             <label for="descricao">Descrição</label>
-            <input id="descricao" [(ngModel)]="produtoEditando.descricao" name="descricao" />
+            <input id="descricao" [(ngModel)]="produtoEditando.descricao" name="descricao" class="form-control" />
           </div>
-          <div>
+          <div class="form-group">
             <label for="imagemUrl">URL da Imagem</label>
-            <input id="imagemUrl" [(ngModel)]="produtoEditando.imagemUrl" name="imagemUrl" />
+            <input id="imagemUrl" [(ngModel)]="produtoEditando.imagemUrl" name="imagemUrl" class="form-control" />
           </div>
-          <div>
+          <div class="form-group">
             <label for="valor">Valor</label>
-            <input id="valor" type="number" [(ngModel)]="produtoEditando.valor" name="valor" />
+            <input id="valor" type="number" [(ngModel)]="produtoEditando.valor" name="valor" class="form-control" />
           </div>
-          <div>
+          <div class="form-group">
             <label for="quantidade">Quantidade</label>
-            <input id="quantidade" type="number" [(ngModel)]="produtoEditando.quantidade" name="quantidade" />
+            <input id="quantidade" type="number" [(ngModel)]="produtoEditando.quantidade" name="quantidade"
+              class="form-control" />
           </div>
-          <button type="submit" class="btn btn-success">Salvar</button>
+          <button type="submit" class="btn btn-success btn-block">Salvar</button>
         </form>
       </div>
     </div>

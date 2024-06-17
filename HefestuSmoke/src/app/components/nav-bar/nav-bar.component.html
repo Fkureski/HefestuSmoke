@@ -1,31 +1,19 @@
 <nav class="navbar navbar-expand-lg bg-black mb-3">
 	<div class="container-fluid">
-		<a class="navbar-brand fs-1 text-light" [routerLink]="'.'">HefestuSmoke</a>
+		<a class="navbar-brand fs-1 text-light" [routerLink]="''">HefestuSmoke</a>
 
 		<button class="navbar-toggler custom-button" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">&#9776;</button>
 
 		<div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
 			<ul class="navbar-nav gap-2">
 				<li class="nav-item">
-					<a class="nav-link text-custom" [routerLink]="'/produtos'" (click)="isMenuCollapsed = true">Produtos</a>
+					<a class="nav-link text-custom" [routerLink]="'/narguiles'" (click)="isMenuCollapsed = true">Produtos</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link text-custom" [routerLink]="'/login'" (click)="isMenuCollapsed = true">Login</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link text-custom" [routerLink]="'/cadastro'" (click)="isMenuCollapsed = true">Cadastro</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-custom" [routerLink]="'/cadastroProduto'" (click)="isMenuCollapsed = true">Cadastro Produto</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-custom" [routerLink]="'/vendas'" (click)="isMenuCollapsed = true">Vendas</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-custom" [routerLink]="'/lista-usuarios'" (click)="isMenuCollapsed = true">lista-usuarios</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link text-custom" [routerLink]="'/narguiles'" (click)="isMenuCollapsed = true">Nargas</a>
 				</li>
 			</ul>
 		</div>

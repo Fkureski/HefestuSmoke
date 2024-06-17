@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-narguiles',
   templateUrl: './narguiles.component.html',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
+  imports: [CommonModule, RouterLink, FormsModule, NavBarComponent],
   styleUrls: ['./narguiles.component.scss']
 })
 export class narguilesComponent implements OnInit {

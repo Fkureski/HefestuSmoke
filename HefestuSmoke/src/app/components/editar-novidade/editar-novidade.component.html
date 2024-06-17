@@ -1,0 +1,47 @@
+<app-navbar-adm></app-navbar-adm>
+<main>
+    <section class="cadastro">
+        <div class="cadastro-container">
+            <h2>Lista de Novidades</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let novidade of novidades">
+                        <th scope="row">{{ novidade.key }}</th>
+                        <td>{{ novidade.name }}</td>
+                        <td>{{ novidade.email }}</td>
+                        <td>
+                            <button class="btn btn-warning" (click)="editar(novidade)">Editar</button>
+                            &nbsp;
+                            <button class="btn btn-danger" (click)="excluir(novidade.key)">Excluir</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <!-- Formulário de edição -->
+            <div *ngIf="novidadeEditando">
+                <h2>Editar Novidade</h2>
+                <form class="mt-3" (ngSubmit)="atualizarNovidade()">
+                    <div>
+                        <label for="nome">Nome</label>
+                        <input id="nome" [(ngModel)]="novidadeEditando.name" name="nome" />
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input id="email" [(ngModel)]="novidadeEditando.email" name="email" />
+                    </div>
+                    <button type="submit" class="btn btn-success">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>

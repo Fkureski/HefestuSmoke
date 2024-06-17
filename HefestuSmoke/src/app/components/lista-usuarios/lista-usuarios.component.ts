@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { FirebaseService } from '../../services/firebase.service';
+import { NavbarAdmComponent } from '../navbar-adm/navbar-adm.component';
 
 @Component({
   selector: 'app-lista-usuarios',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
+  imports: [CommonModule, RouterLink, FormsModule, NavbarAdmComponent],
   templateUrl: './lista-usuarios.component.html',
   styleUrls: ['./lista-usuarios.component.scss']
 })

@@ -7,13 +7,16 @@
 		<div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
 			<ul class="navbar-nav gap-2">
 				<li class="nav-item">
-					<a class="nav-link text-custom" [routerLink]="'/produtos'" (click)="isMenuCollapsed = true">Produtos</a>
-				</li>
-				<li class="nav-item">
 					<a class="nav-link text-custom" [routerLink]="'/cadastroProduto'" (click)="isMenuCollapsed = true">Cadastro Produto</a>
 				</li>
 				<li class="nav-item">
+					<a class="nav-link text-custom" [routerLink]="'/produtos'" (click)="isMenuCollapsed = true">Produtos</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link text-custom" [routerLink]="'/listaUsuarios'" (click)="isMenuCollapsed = true">Usuários</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-custom" [routerLink]="'/listaNovidades'" (click)="isMenuCollapsed = true">Newsletter</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link text-custom" [routerLink]="''" (click)="isMenuCollapsed = true">Logout</a>

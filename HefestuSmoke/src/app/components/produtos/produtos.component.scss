@@ -58,6 +58,51 @@
   text-decoration: underline;
 }
 
+body {
+  background: linear-gradient(to bottom, #000000, #ffffff 60%);
+}
+
+.container {
+  max-width: 600px;
+}
+
+h2 {
+  color: #333; /* Cinza escuro */
+}
+
+.bg-light {
+  background-color: #f8f9fa !important; /* Cinza claro */
+}
+
+.form-control {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-group label {
+  color: #333; /* Cinza escuro */
+}
+
+.form-group input {
+  background-color: #fff;
+  color: #333; /* Cinza escuro */
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .table th, .table td {

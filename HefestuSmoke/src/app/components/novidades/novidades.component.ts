@@ -1,18 +1,17 @@
-import { Component, signal } from '@angular/core';
-import { BtnPrimaryComponent } from "../btn-primary/btn-primary.component";
+import { Component, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BtnPrimaryComponent } from "../btn-primary/btn-primary.component";
 import { NovidadesService } from '../../services/novidades.service';
-import { HttpClientModule } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-novidades',
     standalone: true,
     templateUrl: './novidades.component.html',
-    styleUrl: './novidades.component.scss',
-    imports: [BtnPrimaryComponent, ReactiveFormsModule]
+    styleUrls: ['./novidades.component.scss'],
+    imports: [BtnPrimaryComponent, ReactiveFormsModule, CommonModule]
 })
-export class NovidadesComponent {
+export class NovidadesComponent implements OnInit {
     novidadesForm!: FormGroup;
     loading = signal(false);
 
@@ -23,17 +22,19 @@ export class NovidadesComponent {
         });
     }
 
+    ngOnInit() {}
+
     onSubmit() {
         this.loading.set(true);
         if (this.novidadesForm.valid) {
-            this.service.sendData(this.novidadesForm.value.name, this.novidadesForm.value.email).subscribe({
+            const { name, email } = this.novidadesForm.value;
+            this.service.sendNovidade({ name, email }).subscribe({
                 next: () => {
                     this.novidadesForm.reset();
                     this.loading.set(false);
                 },
                 error: () => this.loading.set(false)
-            })
+            });
         }
     }
-
 }

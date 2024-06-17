@@ -26,9 +26,9 @@ export class LoginComponent {
         this.isAuthenticated = true;
         
         if (user.admin) {
-          this.router.navigate(['/listaUsuarios']);
-        } else {
           this.router.navigate(['/produtos']);
+        } else {
+          this.router.navigate(['/vendas']);
         }
       } else {
         console.error('Email ou senha incorretos.');
