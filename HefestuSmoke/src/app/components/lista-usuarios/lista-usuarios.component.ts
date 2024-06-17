@@ -88,6 +88,50 @@ export class ListaUsuariosComponent implements OnInit {
       usuarioAtualizado.telefone = this.usuarioEditando.telefone;
     }
 
+    // Verifica se os dados já existem antes de atualizar
+    if (usuarioAtualizado.email && usuarioAtualizado.email !== this.usuarioOriginal.email) {
+      this.firebaseService.verificarEmailExistente(usuarioAtualizado.email).subscribe(emailExiste => {
+        if (emailExiste) {
+          console.error('Email já cadastrado.');
+          return;
+        }
+        this.verificarCpfETelefone(usuarioAtualizado, usuarioRef);
+      });
+    } else {
+      this.verificarCpfETelefone(usuarioAtualizado, usuarioRef);
+    }
+  }
+
+  verificarCpfETelefone(usuarioAtualizado: any, usuarioRef: any) {
+    if (usuarioAtualizado.cpf && usuarioAtualizado.cpf !== this.usuarioOriginal.cpf) {
+      this.firebaseService.verificarCpfExistente(usuarioAtualizado.cpf).subscribe(cpfExiste => {
+        if (cpfExiste) {
+          console.error('CPF já cadastrado.');
+          return;
+        }
+        this.verificarTelefone(usuarioAtualizado, usuarioRef);
+      });
+    } else {
+      this.verificarTelefone(usuarioAtualizado, usuarioRef);
+    }
+  }
+
+  verificarTelefone(usuarioAtualizado: any, usuarioRef: any) {
+    if (usuarioAtualizado.telefone && usuarioAtualizado.telefone !== this.usuarioOriginal.telefone) {
+      this.firebaseService.verificarTelefoneExistente(usuarioAtualizado.telefone).subscribe(telefoneExiste => {
+        if (telefoneExiste) {
+          console.error('Telefone já cadastrado.');
+          return;
+        }
+        this.atualizarDadosUsuario(usuarioAtualizado, usuarioRef);
+      });
+    } else {
+      this.atualizarDadosUsuario(usuarioAtualizado, usuarioRef);
+    }
+  }
+
+  atualizarDadosUsuario(usuarioAtualizado: any, usuarioRef: any) {
+    // Atualiza o usuário se nenhum dado já existir
     update(usuarioRef, usuarioAtualizado).then(() => {
       this.usuarioEditando = null; // Reseta o usuário em edição
       this.usuarioOriginal = null; // Reseta o usuário original

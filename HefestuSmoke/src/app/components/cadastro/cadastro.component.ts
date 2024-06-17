@@ -23,9 +23,9 @@ export class CadastroComponent implements OnInit {
     ]),
     cpf: new FormControl<string>('', [
       Validators.required,
-      Validators.minLength(11),
-      Validators.maxLength(11),
-      Validators.pattern('^[0-9]*$')
+      Validators.minLength(14),
+      Validators.maxLength(14),
+      Validators.pattern('^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}$')
     ]),
     email: new FormControl<string>('', [
       Validators.required,
